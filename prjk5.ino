@@ -1,10 +1,10 @@
 #include <ESP32Servo.h>
 
 //pin servo
-#define servoPin 3
+#define servoPin 33
 
 //pin sensor water
-#define signalWater 2
+#define signalWater 21
 
 //pin generator water
 #define generatorAir 23
@@ -85,7 +85,7 @@ void loop() {
       STATUSLEDR = HIGH;
     }
     Serial.println("Door Open");
-    myservo.write(90);
+    myservo.write(180);
     digitalWrite(pinLEDG, STATUSLEDG);
     digitalWrite(pinLEDR, STATUSLEDR);
     delay(2000);
@@ -104,7 +104,7 @@ void loop() {
       STATUSLEDG = HIGH;
     }
     Serial.println("Door Close");
-    myservo.write(90);
+    myservo.write(180);
     digitalWrite(pinLEDG, STATUSLEDG);
     digitalWrite(pinLEDR, STATUSLEDR);
     delay(2000);
@@ -119,11 +119,11 @@ void loop() {
   if(waterLevel < 2300) {
     Serial.println("Water Level High");
     STATUSGENERATORAIR = HIGH;
-    digitalWrite(pinGENERATORAIR, STATUSGENERATORAIR);
+    digitalWrite(generatorAir, STATUSGENERATORAIR);
     delay(3000);
     if(waterLevel > 2300){
       STATUSGENERATORAIR = LOW;
-      digitalWrite(pinGENERATORAIR, STATUSGENERATORAIR);
+      digitalWrite(generatorAir, STATUSGENERATORAIR);
     }
     delay(500);
   }
@@ -134,6 +134,13 @@ void loop() {
   if(drakState == LOW) {
     Serial.println("Lampu Kamar Mandi Menyala");
     STATUSLED = HIGH;
+    digitalWrite(pinLED, STATUSLED);
+    delay(800);
+  }
+
+  if(drakState == HIGH) {
+    Serial.println("Lampu Kamar Mandi Menyala");
+    STATUSLED = LOW;
     digitalWrite(pinLED, STATUSLED);
     delay(800);
   }
