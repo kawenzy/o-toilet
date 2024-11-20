@@ -1,5 +1,12 @@
-#include <ESP32Servo.h>
+# Documentation 
 
+Ini adalah dokumentasi tentang bagaimana code ini
+<br/>berjalan sesuai yang kita inginkan agar menjadi fitur O-TOILET.
+<br>Lalu Dibawah Ini Adalah Tahap Membuat Code Tersebut.
+
+<h1>1. Mendefinisikan Variable Code</h1>
+
+```ino
 //pin servo
 #define servoPin 33
 
@@ -22,6 +29,12 @@
 //pin dark sensor
 #define pinDark 19
 
+```
+
+
+<h1>2. Membuat Variable Penentu</h1>
+
+```ino
 
 //variable penentu
 int status = 0;
@@ -44,7 +57,14 @@ int drakState;
 
 Servo myservo;
 
+```
 
+<h1>
+
+
+<h1>3. SETUP Pin ESP32 </h1>
+
+```ino
 void setup() {
   Serial.begin(9600);
   Serial.println("hello word");
@@ -68,6 +88,13 @@ void setup() {
   pinMode(pinDark, INPUT);
 }
 
+```
+
+
+
+<h1>4. Memprogram Systemnya Agar Sesuai Kebutuhan Kita </h1>
+
+```ino
 void loop() {
   //LED definition programs
   digitalWrite(pinLED, STATUSLED);
@@ -152,3 +179,6 @@ void loop() {
 
 }
 
+
+
+```
